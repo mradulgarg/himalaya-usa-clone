@@ -1,0 +1,163 @@
+.marque {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #ff7451;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  margin-top: 10px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+}
+
+.navbar img {
+  width: 150px;
+  height: 50px;
+  margin-left: 20px;
+}
+
+.navbar a {
+  color: #777777;
+  font-size: 18px;
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 20px;
+}
+
+.navbar a:hover {
+  color: #777777;
+  padding: 20px;
+  cursor: pointer;
+}
+.navLinks {
+  display: flex;
+  align-items: center;
+}
+
+.navLinks a {
+  position: relative;
+}
+
+.navLinks a:hover {
+  color: #a3b49b;
+}
+
+.shopLink {
+  position: relative;
+}
+
+.nodrop {
+  display: none;
+}
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: -230px;
+  background-color: white;
+  border: 0.2px solid grey;
+  /* box-shadow: 0 8px 16px rgba(0,0,0,0.2); */
+  z-index: 1;
+  width: 100vw;
+}
+
+.shopLink:hover .dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 4rem;
+}
+
+.routes {
+  display: flex;
+  gap: 50px;
+  padding-left: 10rem;
+}
+
+.routes h1 {
+  color: rgb(106, 134, 106);
+  /* padding: 20px; */
+}
+
+.routes a {
+  color: #777777;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.routes a:hover {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-bottom: none;
+  background-color: transparent;
+  color: rgb(171, 196, 171);
+}
+
+.banner img {
+  width: 300px;
+  height: 400px;
+  padding-right: 8rem;
+  margin-bottom: 40px;
+}
+
+.divider {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.icons {
+  display: flex;
+  color: #777777;
+  margin-right: 20px;
+}
+
+.icons a:hover {
+  color: #a3b49b;
+  cursor: pointer;
+}
+
+.account {
+  position: relative;
+}
+
+.accountDropdown {
+  display: none;
+  position: absolute;
+  width: 200px;
+  top: 75px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #fff;
+  box-shadow: 1px 2px 5px #777777;
+  z-index: 1;
+}
+
+.accountDropdown a:hover {
+  border-bottom: none;
+  width: 200px;
+  padding: 20px;
+}
+
+.account:hover .accountDropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  height: auto;
+  padding: 20px;
+}
