@@ -17,13 +17,14 @@ const Overview = () => {
 
   const addToCart = async () => {
     try {
-      const {name,price,count,imageUrl} = details;
+      const {name,price,count,imageUrl,_id} = details;
       const response = await axios.post(`http://localhost:3010/cart`, {
         email,
         name,
         price,
         count,
         imageUrl,
+        productId:_id,
       });
 
       console.log(response.data);

@@ -42,25 +42,25 @@ const FollowUs = () => {
         <div className={styles.child1}>
           <h1>Follow us @himalayausa</h1>
           <div className={styles.icon}>
-            <a
+            <Link
               href="https://www.instagram.com/himalayausa/"
               target="_blank"
               alt="insta link"
             >
               <InstagramIcon />
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://www.facebook.com/HimalayaUSA"
               target="_blank"
               alt="fb llink"
             >
               <FacebookOutlinedIcon />
-            </a>
+            </Link>
           </div>
         </div>
 
         <div className={styles.child2}>
-          <a href="#">
+          <Link href="#">
             <div className={styles.image}>
               <img src="src/assets/Home/followUs-banner1.webp" alt="category" />
               <div className={styles.layer}>
@@ -69,8 +69,8 @@ const FollowUs = () => {
                 </h1>
               </div>
             </div>
-          </a>
-          <a href="#">
+          </Link>
+          <Link href="#">
             <div className={styles.image}>
               <img src="src/assets/Home/followUs-banner2.webp" alt="category" />
               <div className={styles.layer}>
@@ -79,8 +79,8 @@ const FollowUs = () => {
                 </h1>
               </div>
             </div>
-          </a>
-          <a href="#">
+          </Link>
+          <Link href="#">
             <div className={styles.image}>
               <img src="src/assets/Home/followUs-banner3.webp" alt="category" />
               <div className={styles.layer}>
@@ -89,8 +89,8 @@ const FollowUs = () => {
                 </h1>
               </div>
             </div>
-          </a>
-          <a href="#">
+          </Link>
+          <Link href="#">
             <div className={styles.image}>
               <img src="src/assets/Home/followUs-banner4.webp" alt="category" />
               <div className={styles.layer}>
@@ -99,7 +99,7 @@ const FollowUs = () => {
                 </h1>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </>

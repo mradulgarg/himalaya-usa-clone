@@ -27,7 +27,6 @@ const useStyles = makeStyles(() => ({
 const ShoppingCart = () => {
   const { id } = useParams();
   const [details, setDetails] = useState([]);
-  const [count, setCount] = useState(1);
   const classes = useStyles();
   const { email } = useSelector(state => state.user);
 
@@ -38,8 +37,7 @@ const ShoppingCart = () => {
           email,
         });
         console.log(response.data, "deta");
-        setDetails(response.data);
-        setCount(response.data.count || 1);
+        setDetails(response.data.map(item => ({ ...item, count: item.count || 1 })));
       } catch (error) {
         console.error("Error fetching cart data:", error);
       }
@@ -47,19 +45,29 @@ const ShoppingCart = () => {
     fetchData();
   }, [email]);
 
-  const handleIncrease = () => {
-    setCount((prev) => prev + 1);
+  const handleIncrease = (id) => {
+    setDetails(details.map(detail => 
+      detail.id === id ? { ...detail, count: detail.count + 1 } : detail
+    ));
   };
 
-  const handleDecrease = () => {
-    if (count > 1) {
-      setCount((prev) => prev - 1);
+  const handleDecrease = (id) => {
+    setDetails(details.map(detail => 
+      detail.id === id && detail.count > 1 ? { ...detail, count: detail.count - 1 } : detail
+    ));
+  };
+
+  const handleDelete = async (productId) => {
+    try {
+      console.log("Attempting to delete item with email and _id:", email, productId);
+      await axios.delete(`http://localhost:3010/cart/${email}/${productId}`);
+      console.log("Successfully deleted item:", productId);
+      setDetails(details.filter(detail => detail.productId !== productId));
+    } catch (error) {
+      console.error("Error deleting cart item:", error.response ? error.response.data : error.message);
     }
   };
-
-  const handleDelete = (id) => {
-    // deleteProduct(id);
-  };
+  
 
   return (
     <Grid
@@ -79,7 +87,7 @@ const ShoppingCart = () => {
           className={classes.card}
           item
         >
-          <DeleteOutlineIcon onClick={() => handleDelete(detail.id)} />
+          <DeleteOutlineIcon onClick={() => handleDelete(detail.productId)} />
           <img src={detail.imageUrl} width={300} height={300} alt="" />
           <Typography variant="h6">{detail.name}</Typography>
           <Typography variant="h6" className={classes.price}>
@@ -97,13 +105,13 @@ const ShoppingCart = () => {
                 backgroundColor: "#f2f2f0",
               },
             }}
-            startIcon={<RemoveIcon onClick={handleDecrease} />}
-            endIcon={<AddIcon onClick={handleIncrease} />}
+            startIcon={<RemoveIcon onClick={() => handleDecrease(detail.id)} />}
+            endIcon={<AddIcon onClick={() => handleIncrease(detail.id)} />}
           >
-            {count}
+            {detail.count}
           </Button>
           <Typography variant="h6" className={classes.price}>
-            ${(parseFloat(detail.price.slice(1) || 0) * count).toFixed(2)}
+            ${(parseFloat(detail.price.slice(1) || 0) * detail.count).toFixed(2)}
           </Typography>
         </Grid>
       ))}
@@ -126,7 +134,7 @@ const ShoppingCart = () => {
         >
           <Typography variant="h4">
             Grand Total:$
-            {(details.reduce((total, detail) => total + (parseFloat(detail.price.slice(1) || 0) * count), 0)).toFixed(2)}
+            {(details.reduce((total, detail) => total + (parseFloat(detail.price.slice(1) || 0) * detail.count), 0)).toFixed(2)}
           </Typography>
         </Box>
       </Grid>
