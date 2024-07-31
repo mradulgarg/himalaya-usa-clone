@@ -20,6 +20,7 @@ const Register = () => {
   const [snackbarSeverity, setSnackbarSeverity] = useState("success"); // 'success' or 'error'
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const userHandler = (e) => {
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
@@ -46,9 +47,14 @@ const Register = () => {
       );
 
       localStorage.setItem("access_token", response.data.token);
-      navigate("/", { replace: true });
       setSnackbarMessage("Successfully Registered!");
       setSnackbarSeverity("success");
+      setSnackbarOpen(true);
+
+      setTimeout(()=>{
+        navigate("/", { replace: true });
+      },1000);
+      
     } catch (error) {
       console.error(error);
       setSnackbarMessage("Registration Failed. Please try again.");

@@ -36,9 +36,15 @@ const SignIn = () => {
           id: response.data.user._id,
         })
       );
-      navigate("/account", { replace: true });
+      
       setSnackbarMessage("Successfully Signed In!");
       setSnackbarSeverity("success");
+      setSnackbarOpen(true);
+
+      setTimeout(()=>{
+        navigate("/account", { replace: true });
+      },1000);
+      
     } catch (error) {
       console.error("Error logging in:", error);
       setSnackbarMessage("Login Failed. Please check your credentials.");

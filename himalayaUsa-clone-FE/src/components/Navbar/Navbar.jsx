@@ -54,6 +54,7 @@ const Navbar = () => {
   const classes = useStyles();
   const [searchValue, setSearchValue] = useState(null);
   const [serachEnable, setSerachEnable] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -147,6 +148,9 @@ const Navbar = () => {
                       textDecoration: "none",
                       color: "#777777",
                       fontSize: "18px",
+                      "&:hover": {
+                        color: "#A3B49B",
+                      },
                     }}
                     onClick={handleShopClick}
                     onMouseEnter={handleShopMenuOpen}
@@ -160,6 +164,9 @@ const Navbar = () => {
                       textDecoration: "none",
                       color: "#777777",
                       fontSize: "18px",
+                      "&:hover": {
+                        color: "#A3B49B",
+                      },
                     }}
                   >
                     About
@@ -171,6 +178,9 @@ const Navbar = () => {
                       textDecoration: "none",
                       color: "#777777",
                       fontSize: "18px",
+                      "&:hover": {
+                        color: "#A3B49B",
+                      },
                     }}
                   >
                     Store Locator

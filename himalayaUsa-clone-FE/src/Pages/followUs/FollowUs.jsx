@@ -43,7 +43,7 @@ const FollowUs = () => {
           <h1>Follow us @himalayausa</h1>
           <div className={styles.icon}>
             <Link
-              href="https://www.instagram.com/himalayausa/"
+              href="https://www.instagram.com/Himalayausa/"
               target="_blank"
               alt="insta link"
             >
@@ -64,7 +64,7 @@ const FollowUs = () => {
             <div className={styles.image}>
               <img src="/assets/Home/followUs-banner1.webp" alt="category" />
               <div className={styles.layer}>
-                <h1 onClick={handleOpen}>
+                <h1>
                   <Instagram />
                 </h1>
               </div>
@@ -74,7 +74,7 @@ const FollowUs = () => {
             <div className={styles.image}>
               <img src="/assets/Home/followUs-banner2.webp" alt="category" />
               <div className={styles.layer}>
-                <h1 onClick={handleOpen}>
+                <h1>
                   <Instagram />
                 </h1>
               </div>
@@ -84,7 +84,7 @@ const FollowUs = () => {
             <div className={styles.image}>
               <img src="/assets/Home/followUs-banner3.webp" alt="category" />
               <div className={styles.layer}>
-                <h1 onClick={handleOpen}>
+                <h1>
                   <Instagram />
                 </h1>
               </div>
@@ -94,7 +94,7 @@ const FollowUs = () => {
             <div className={styles.image}>
               <img src="/assets/Home/followUs-banner4.webp" alt="category" />
               <div className={styles.layer}>
-                <h1 onClick={handleOpen}>
+                <h1>
                   <Instagram />
                 </h1>
               </div>
