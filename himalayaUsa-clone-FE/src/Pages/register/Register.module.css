@@ -37,3 +37,30 @@
   text-align: left;
   cursor: pointer;
 }
+
+@media (max-width: 1024px) {
+  .container {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 75%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+    gap: 20px;
+  }
+
+  .container h1 {
+    font-size: 28px;
+  }
+
+  .container h4 {
+    font-size: 20px;
+  }
+}

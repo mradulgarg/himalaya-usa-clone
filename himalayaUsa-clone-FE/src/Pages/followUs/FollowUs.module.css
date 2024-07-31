@@ -1,3 +1,4 @@
+/* Base styles */
 .container {
   width: 70%;
   margin: 20px auto;
@@ -6,7 +7,7 @@
 
 .image {
   position: relative;
-  width: 260px;
+  width: 240px;
   height: 240px;
   overflow: hidden;
 }
@@ -39,6 +40,7 @@
 .child1 {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .child1 h1 {
@@ -56,6 +58,8 @@
 .child2 {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-top: 20px;
 }
 
@@ -71,4 +75,73 @@ a div:hover {
 .icon a:hover {
   color: #a3b49b;
   cursor: pointer;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .container {
+    width: 80%;
+  }
+
+  .image {
+    width: 200px;
+    height: 180px;
+  }
+
+  .child1 h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: 90%;
+  }
+
+  .child1 {
+    justify-content: center;
+  }
+
+  .child1 h1 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .icon a {
+    margin-top: 10px;
+  }
+
+  .child2 {
+    gap: 10px;
+  }
+
+  .image {
+    width: 160px;
+    height: 140px;
+  }
+
+  .layer {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  .child1 h1 {
+    font-size: 20px;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+  }
+
+  .layer {
+    font-size: 12px;
+  }
 }

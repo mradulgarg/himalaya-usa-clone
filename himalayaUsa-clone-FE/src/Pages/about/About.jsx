@@ -9,6 +9,13 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "space-around",
     borderBottom: "1px solid #ff7451",
+    "@media (max-width: 900px)": {
+      margin: "20px auto",
+    },
+    "@media (max-width: 600px)": {
+      width:"100vw",
+      margin: "20px auto",
+    },
   },
   tab: {
     borderColor: "white",
@@ -24,6 +31,11 @@ const useStyles = makeStyles(() => ({
       backgroundColor: "#006666",
       borderBottom: "2px solid white",
     },
+    "@media (max-width: 600px)": {
+      width: "auto",
+      fontSize: "0.75rem",
+      padding: "6px 12px",
+    },
   },
   header: {
     color: "#006666",
@@ -33,6 +45,24 @@ const useStyles = makeStyles(() => ({
   description: {
     color: "#333333",
     fontSize: "18px",
+    "@media (max-width: 600px)": {
+      fontSize: "16px",
+    },
+  },
+  imgContainer: {
+    flex: 1,
+    "@media (max-width: 900px)": {
+      width: "100%",
+      height: "auto",
+      marginBottom: "20px",
+    },
+  },
+  contentContainer: {
+    flex: 1,
+    "@media (max-width: 900px)": {
+      width: "100%",
+      height: "auto",
+    },
   },
 }));
 
@@ -114,27 +144,29 @@ const About = () => {
             display={"flex"}
             justifyContent={"space-between"}
             gap={10}
-            width={1300}
+            width="100%"
             marginTop={2}
-            marginLeft={10}
+            padding="0 10px"
+            flexDirection={{ xs: "column", md: "row" }}
           >
-            <img
-              src={tabPanelValues[value].src}
-              width={700}
-              alt={tabPanelValues[value].header}
-            />
-            <div>
+            <Box className={classes.imgContainer}>
+              <img
+                src={tabPanelValues[value].src}
+                width="100%"
+                alt={tabPanelValues[value].header}
+              />
+            </Box>
+            <Box className={classes.contentContainer}>
               <Typography variant="h6" className={classes.header}>
                 {tabPanelValues[value].header}
               </Typography>
               <Typography className={classes.description}>
                 {tabPanelValues[value].desc}
               </Typography>
-            </div>
+            </Box>
           </Box>
         </Box>
       </Grid>
-      <Grid item></Grid>
     </Grid>
   );
 };

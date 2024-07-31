@@ -62,7 +62,7 @@ const FollowUs = () => {
         <div className={styles.child2}>
           <Link href="#">
             <div className={styles.image}>
-              <img src="src/assets/Home/followUs-banner1.webp" alt="category" />
+              <img src="/assets/Home/followUs-banner1.webp" alt="category" />
               <div className={styles.layer}>
                 <h1 onClick={handleOpen}>
                   <Instagram />
@@ -72,7 +72,7 @@ const FollowUs = () => {
           </Link>
           <Link href="#">
             <div className={styles.image}>
-              <img src="src/assets/Home/followUs-banner2.webp" alt="category" />
+              <img src="/assets/Home/followUs-banner2.webp" alt="category" />
               <div className={styles.layer}>
                 <h1 onClick={handleOpen}>
                   <Instagram />
@@ -82,7 +82,7 @@ const FollowUs = () => {
           </Link>
           <Link href="#">
             <div className={styles.image}>
-              <img src="src/assets/Home/followUs-banner3.webp" alt="category" />
+              <img src="/assets/Home/followUs-banner3.webp" alt="category" />
               <div className={styles.layer}>
                 <h1 onClick={handleOpen}>
                   <Instagram />
@@ -92,7 +92,7 @@ const FollowUs = () => {
           </Link>
           <Link href="#">
             <div className={styles.image}>
-              <img src="src/assets/Home/followUs-banner4.webp" alt="category" />
+              <img src="/assets/Home/followUs-banner4.webp" alt="category" />
               <div className={styles.layer}>
                 <h1 onClick={handleOpen}>
                   <Instagram />

@@ -11,7 +11,7 @@ const BestSeller = () => {
       <div className={styles.parent}>
         <h1>Best Seller</h1>
         <div>
-          <img width={140} height={200} src="src/assets/Home/bestSeller.png" />
+          <img width={140} height={200} src="/assets/Home/bestSeller.png" />
           <div className={styles.parentChild}>
             <h1>Unlock the Wisdom of Herbs</h1>
             <h2>with Herbal Supplements, Toothpaste & More!</h2>

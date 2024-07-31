@@ -12,7 +12,8 @@ const SignIn = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success"); // 'success' or 'error'
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
   const loginHandler = async () => {
     const token = localStorage.getItem("access_token");
     console.log(token, "token");
@@ -28,8 +29,14 @@ const dispatch = useDispatch()
         }
       );
       console.log(response.data, "data");
-      dispatch(setUserData({ email: response.data.user.email, name: response.data.user.firstname ,id:response.data.user._id}));
-      navigate('/account',{replace:true})
+      dispatch(
+        setUserData({
+          email: response.data.user.email,
+          name: response.data.user.firstname,
+          id: response.data.user._id,
+        })
+      );
+      navigate('/account', { replace: true });
       setSnackbarMessage("Successfully Signed In!");
       setSnackbarSeverity("success");
     } catch (error) {

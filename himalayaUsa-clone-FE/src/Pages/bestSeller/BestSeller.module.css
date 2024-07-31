@@ -1,3 +1,4 @@
+/* Base styles */
 .parent {
   margin-top: 200px;
   text-align: center;
@@ -106,4 +107,96 @@
   text-decoration: none;
   background-color: #48cab2;
   cursor: pointer;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .parent > div {
+    width: 80%;
+  }
+
+  .box {
+    width: 45%;
+  }
+
+  .container {
+    width: 80%;
+  }
+
+  .container + div {
+    width: 150px;
+  }
+}
+
+@media (max-width: 900px) {
+  .parent > div {
+    width: 90%;
+  }
+
+  .box {
+    width: 100%;
+    height: auto;
+  }
+
+  .container {
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .parentChild h1,
+  .parentChild h2,
+  .parentChild p {
+    font-size: 18px;
+  }
+
+  .box h4 {
+    font-size: 14px;
+  }
+
+  .box p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .parent {
+    margin-top: 100px;
+  }
+
+  .parent h1 {
+    font-size: 24px;
+  }
+
+  .parent > div {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .parentChild {
+    width: 100%;
+    text-align: center;
+  }
+
+  .parentChild h1,
+  .parentChild h2 {
+    font-size: 22px;
+  }
+
+  .parentChild p {
+    font-size: 14px;
+  }
+
+  .container {
+    width: 80%;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .anchors {
+    display: none;
+  }
 }

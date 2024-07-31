@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import {
   Box,
   Button,
@@ -71,7 +70,7 @@ const Product = () => {
 
   useEffect(() => {
     const parsePrice = (priceStr) => {
-      return parseFloat(priceStr.replace(/[^0-9.-]+/g, ""));
+      return parseFloat(priceStr?.replace(/[^0-9.-]+/g, ""));
     };
     if (sorting === 0) {
       const sortedData = data.sort((a, b) => {
@@ -101,7 +100,9 @@ const Product = () => {
         if (category !== "all") {
           setData(
             response.data.filter(
-              (res) => res.category === normalizeCategory(category)
+              (res) =>
+                res.category == normalizeCategory(category) ||
+                res.subCategory == normalizeCategory(category)
             )
           );
         } else {
@@ -109,7 +110,9 @@ const Product = () => {
         }
         console.log(
           response.data.filter(
-            (res) => res.category === normalizeCategory(category)
+            (res) => 
+              res.category === normalizeCategory(category) ||
+              res.subCategory === normalizeCategory(category)
           ),
           normalizeCategory(category),
           "filter"
@@ -121,6 +124,7 @@ const Product = () => {
         setLoading(false);
       });
   }, [category]);
+  
 
   if (loading) return <Typography>Loading...</Typography>;
   if (error) return <Typography>Error loading products</Typography>;

@@ -11,28 +11,27 @@ const Overview = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [details, setDetails] = useState(null);
-  const [count, setCount] = useState(null);
-  const {email} = useSelector(state => state.user)
- 
+  const [count, setCount] = useState(1);
+  const { email } = useSelector((state) => state.user);
 
   const addToCart = async () => {
     try {
-      const {name,price,count,imageUrl,_id} = details;
+      const { name, price, imageUrl, _id } = details;
       const response = await axios.post(`http://localhost:3010/cart`, {
         email,
         name,
         price,
         count,
         imageUrl,
-        productId:_id,
+        productId: _id,
       });
 
       console.log(response.data);
+      navigate(`/cart`);
     } catch (error) {
-      console.error("Error updating product count:", error);
+      console.error("Error adding product to cart:", error);
     }
   };
-
 
   const updateProductCount = async (id, count) => {
     try {
@@ -45,13 +44,16 @@ const Overview = () => {
     }
   };
 
-  // Example usage
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:3010/products/${id}`);
-      console.log(response.data, "deta");
-      setDetails(response.data);
-      setCount(response.data.count || 1);
+      try {
+        const response = await axios.get(`http://localhost:3010/products/${id}`);
+        console.log(response.data, "deta");
+        setDetails(response.data);
+        setCount(response.data.count || 1);
+      } catch (error) {
+        console.error("Error fetching product details:", error);
+      }
     };
     fetchData();
   }, [id]);
@@ -75,57 +77,70 @@ const Overview = () => {
   };
 
   return (
-    <Grid container justifyContent={"space-around"}>
-      <Grid item>
-        <img src={details?.imageUrl} width={400} height={500} alt="" />
+    <Grid container spacing={2} padding={2} justifyContent="center">
+      <Grid item xs={12} md={6} lg={4} container justifyContent="center">
+        <img
+          src={details?.imageUrl}
+          width="100%"
+          height="auto"
+          style={{ maxWidth: '400px', maxHeight: '500px' }}
+          alt={details?.name}
+        />
       </Grid>
-      {details && (
-        <Grid item fontWeight={300} marginTop={6}>
-          <Typography variant="h4" sx={{ fontWeight: "900" }}>
-            {details.name} <br />
-            {details.price}
-          </Typography>
-          <Grid container item gap={2} marginTop={5}>
-            <Button
-              variant="contained"
-              sx={{
-                width: "30%",
-                borderRadius: "30px",
-                backgroundColor: "#f2f2f0",
-                color: "black",
-                "&:hover": {
-                  backgroundColor: "#f2f2f0",
-                },
-              }}
-              startIcon={<RemoveIcon onClick={handleDecrease} />}
-              endIcon={<AddIcon onClick={handleIncrease} />}
+      <Grid item xs={12} md={6} lg={4}>
+        {details && (
+          <>
+            <Typography variant="h4" sx={{ fontWeight: "900", marginBottom: 2 }}>
+              {details.name} <br />
+              {details.price}
+            </Typography>
+            <Grid container spacing={2} alignItems="center">
+              <Grid item xs={12} md={6}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    width: "100%",
+                    borderRadius: "30px",
+                    backgroundColor: "#f2f2f0",
+                    color: "black",
+                    "&:hover": {
+                      backgroundColor: "#f2f2f0",
+                    },
+                  }}
+                  startIcon={<RemoveIcon onClick={handleDecrease} />}
+                  endIcon={<AddIcon onClick={handleIncrease} />}
+                >
+                  {count}
+                </Button>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    width: "100%",
+                    height: "50px",
+                    borderRadius: "30px",
+                    backgroundColor: "#1A4448",
+                    "&:hover": {
+                      backgroundColor: "#A3B49B",
+                    },
+                  }}
+                  startIcon={<LocalMallIcon />}
+                  onClick={addToCart}
+                >
+                  Add To Cart
+                </Button>
+              </Grid>
+            </Grid>
+            <Typography
+              variant="body1"
+              sx={{ marginTop: 2 }}
             >
-              {count}
-            </Button>
-
-            <Button
-              variant="contained"
-              sx={{
-                width: "60%",
-                height: "50px",
-                borderRadius: "30px",
-                backgroundColor: "#1A4448",
-                "&:hover": {
-                  backgroundColor: "#A3B49B",
-                },
-              }}
-              startIcon={<LocalMallIcon />}
-              onClick={() => {addToCart();
-                navigate(`/cart`)}}
-            >
-              Add To Cart
-            </Button>
-          </Grid>
-          <Grid item width={600} sx={{ margin: "5% 0", fontWeight: "300" }}>
-            {details.description}
-          </Grid>
-        </Grid>
-      )}
+              {details.description}
+            </Typography>
+          </>
+        )}
+      </Grid>
     </Grid>
   );
 };
