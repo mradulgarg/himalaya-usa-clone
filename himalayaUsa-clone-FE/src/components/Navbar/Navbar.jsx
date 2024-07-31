@@ -661,13 +661,13 @@ const Navbar = () => {
           Close
         </Link>
         <List>
-          <ListItem button component={Link} to="/products/all">
+          <ListItem onClick={handleDrawerToggle} button component={Link} to="/products/all">
             <ListItemText primary="Shop" />
           </ListItem>
-          <ListItem button component={Link} to="/about">
+          <ListItem onClick={handleDrawerToggle} button component={Link} to="/about">
             <ListItemText primary="About" />
           </ListItem>
-          <ListItem button component={Link} to="#">
+          <ListItem onClick={handleDrawerToggle} button component={Link} to="#">
             <ListItemText primary="Store Locator" />
           </ListItem>
           <hr
@@ -679,13 +679,13 @@ const Navbar = () => {
             }}
           />
           <Typography variant="h6">My Account</Typography>
-          <ListItem button component={Link} to="/signin">
+          <ListItem onClick={handleDrawerToggle} button component={Link} to="/signin">
             <ListItemText primary="Sign In" />
           </ListItem>
-          <ListItem button component={Link} to="/register">
+          <ListItem onClick={handleDrawerToggle} button component={Link} to="/register">
             <ListItemText primary="Register" />
           </ListItem>
-          <ListItem button component={Link} to="/cart">
+          <ListItem onClick={handleDrawerToggle} button component={Link} to="/cart">
             <ListItemText primary="Checkout" />
           </ListItem>
         </List>
