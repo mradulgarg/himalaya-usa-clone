@@ -17,14 +17,17 @@ const Overview = () => {
   const addToCart = async () => {
     try {
       const { name, price, imageUrl, _id } = details;
-      const response = await axios.post(`http://localhost:3010/cart`, {
-        email,
-        name,
-        price,
-        count,
-        imageUrl,
-        productId: _id,
-      });
+      const response = await axios.post(
+        `https://himalaya-usa-clone.onrender.com/cart`,
+        {
+          email,
+          name,
+          price,
+          count,
+          imageUrl,
+          productId: _id,
+        }
+      );
 
       console.log(response.data);
       navigate(`/cart`);
@@ -35,9 +38,12 @@ const Overview = () => {
 
   const updateProductCount = async (id, count) => {
     try {
-      const response = await axios.put(`http://localhost:3010/products/${id}`, {
-        count,
-      });
+      const response = await axios.put(
+        `https://himalaya-usa-clone.onrender.com/products/${id}`,
+        {
+          count,
+        }
+      );
       console.log(response.data);
     } catch (error) {
       console.error("Error updating product count:", error);
@@ -47,7 +53,9 @@ const Overview = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3010/products/${id}`);
+        const response = await axios.get(
+          `https://himalaya-usa-clone.onrender.com/products/${id}`
+        );
         console.log(response.data, "deta");
         setDetails(response.data);
         setCount(response.data.count || 1);
@@ -83,14 +91,17 @@ const Overview = () => {
           src={details?.imageUrl}
           width="100%"
           height="auto"
-          style={{ maxWidth: '400px', maxHeight: '500px' }}
+          style={{ maxWidth: "400px", maxHeight: "500px" }}
           alt={details?.name}
         />
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
         {details && (
           <>
-            <Typography variant="h4" sx={{ fontWeight: "900", marginBottom: 2 }}>
+            <Typography
+              variant="h4"
+              sx={{ fontWeight: "900", marginBottom: 2 }}
+            >
               {details.name} <br />
               {details.price}
             </Typography>
@@ -132,10 +143,7 @@ const Overview = () => {
                 </Button>
               </Grid>
             </Grid>
-            <Typography
-              variant="body1"
-              sx={{ marginTop: 2 }}
-            >
+            <Typography variant="body1" sx={{ marginTop: 2 }}>
               {details.description}
             </Typography>
           </>

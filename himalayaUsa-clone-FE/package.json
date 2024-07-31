@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "http://localhost:3010",
+  "proxy": "https://himalaya-usa-clone.onrender.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

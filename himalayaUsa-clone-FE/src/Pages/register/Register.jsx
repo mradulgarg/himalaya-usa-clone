@@ -19,7 +19,7 @@ const Register = () => {
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success"); // 'success' or 'error'
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const userHandler = (e) => {
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
@@ -36,15 +36,17 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3010/user/register",
+        "https://himalaya-usa-clone.onrender.com/user/register",
         user
       );
-      console.log(response.data, "data",response.data.user._id);
+      console.log(response.data, "data", response.data.user._id);
 
-      dispatch(setUserData({ email: email, name: fname ,id:response.data.user._id}));
+      dispatch(
+        setUserData({ email: email, name: fname, id: response.data.user._id })
+      );
 
       localStorage.setItem("access_token", response.data.token);
-      navigate('/',{replace:true})
+      navigate("/", { replace: true });
       setSnackbarMessage("Successfully Registered!");
       setSnackbarSeverity("success");
     } catch (error) {

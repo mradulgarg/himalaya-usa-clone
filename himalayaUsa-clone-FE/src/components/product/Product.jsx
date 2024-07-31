@@ -95,7 +95,7 @@ const Product = () => {
   }, [sorting, data]);
   useEffect(() => {
     axios
-      .get("http://localhost:3010/products")
+      .get("https://himalaya-usa-clone.onrender.com/products")
       .then((response) => {
         if (category !== "all") {
           setData(
@@ -110,7 +110,7 @@ const Product = () => {
         }
         console.log(
           response.data.filter(
-            (res) => 
+            (res) =>
               res.category === normalizeCategory(category) ||
               res.subCategory === normalizeCategory(category)
           ),
@@ -124,7 +124,6 @@ const Product = () => {
         setLoading(false);
       });
   }, [category]);
-  
 
   if (loading) return <Typography>Loading...</Typography>;
   if (error) return <Typography>Error loading products</Typography>;

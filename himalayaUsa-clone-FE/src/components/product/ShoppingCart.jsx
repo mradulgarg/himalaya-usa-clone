@@ -1,4 +1,12 @@
-import { Box, Button, Grid, Typography, useMediaQuery, createTheme, ThemeProvider } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  Typography,
+  useMediaQuery,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -29,7 +37,7 @@ const useStyles = makeStyles(() => ({
   anchor: {
     color: "black",
     textDecoration: "none",
-    cursor:"pointer",
+    cursor: "pointer",
   },
   totalBox: {
     display: "flex",
@@ -84,10 +92,15 @@ const ShoppingCart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post(`http://localhost:3010/cart/getByEmail`, {
-          email,
-        });
-        setDetails(response.data.map((item) => ({ ...item, count: item.count || 1 })));
+        const response = await axios.post(
+          `https://himalaya-usa-clone.onrender.com/cart/getByEmail`,
+          {
+            email,
+          }
+        );
+        setDetails(
+          response.data.map((item) => ({ ...item, count: item.count || 1 }))
+        );
       } catch (error) {
         console.error("Error fetching cart data:", error);
       }
@@ -98,7 +111,9 @@ const ShoppingCart = () => {
   const handleIncrease = (productId) => {
     setDetails((prevDetails) =>
       prevDetails.map((detail) =>
-        detail.productId === productId ? { ...detail, count: detail.count + 1 } : detail
+        detail.productId === productId
+          ? { ...detail, count: detail.count + 1 }
+          : detail
       )
     );
   };
@@ -115,16 +130,29 @@ const ShoppingCart = () => {
 
   const handleDelete = async (productId) => {
     try {
-      await axios.delete(`http://localhost:3010/cart/${email}/${productId}`);
-      setDetails((prevDetails) => prevDetails.filter((detail) => detail.productId !== productId));
+      await axios.delete(
+        `https://himalaya-usa-clone.onrender.com/cart/${email}/${productId}`
+      );
+      setDetails((prevDetails) =>
+        prevDetails.filter((detail) => detail.productId !== productId)
+      );
     } catch (error) {
-      console.error("Error deleting cart item:", error.response ? error.response.data : error.message);
+      console.error(
+        "Error deleting cart item:",
+        error.response ? error.response.data : error.message
+      );
     }
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container justifyContent={"center"} width={"100%"} padding={"2rem"} gap={3}>
+      <Grid
+        container
+        justifyContent={"center"}
+        width={"100%"}
+        padding={"2rem"}
+        gap={3}
+      >
         <Typography variant="h4">Shopping Cart</Typography>
         {details.map((detail) => (
           <Grid
@@ -136,7 +164,11 @@ const ShoppingCart = () => {
             item
           >
             <DeleteOutlineIcon onClick={() => handleDelete(detail.productId)} />
-            <img src={detail.imageUrl} className={classes.img} alt={detail.name} />
+            <img
+              src={detail.imageUrl}
+              className={classes.img}
+              alt={detail.name}
+            />
             <Typography variant="h6">{detail.name}</Typography>
             <Typography variant="h6" className={classes.price}>
               {detail.price}
@@ -144,13 +176,20 @@ const ShoppingCart = () => {
             <Button
               variant="outlined"
               className={classes.button}
-              startIcon={<RemoveIcon onClick={() => handleDecrease(detail.productId)} />}
-              endIcon={<AddIcon onClick={() => handleIncrease(detail.productId)} />}
+              startIcon={
+                <RemoveIcon onClick={() => handleDecrease(detail.productId)} />
+              }
+              endIcon={
+                <AddIcon onClick={() => handleIncrease(detail.productId)} />
+              }
             >
               {detail.count}
             </Button>
             <Typography variant="h6" className={classes.price}>
-              ${(parseFloat(detail.price.slice(1) || 0) * detail.count).toFixed(2)}
+              $
+              {(parseFloat(detail.price.slice(1) || 0) * detail.count).toFixed(
+                2
+              )}
             </Typography>
           </Grid>
         ))}
@@ -168,7 +207,12 @@ const ShoppingCart = () => {
             <Typography variant="h4">
               Grand Total: $
               {details
-                .reduce((total, detail) => total + parseFloat(detail.price.slice(1) || 0) * detail.count, 0)
+                .reduce(
+                  (total, detail) =>
+                    total +
+                    parseFloat(detail.price.slice(1) || 0) * detail.count,
+                  0
+                )
                 .toFixed(2)}
             </Typography>
           </Box>

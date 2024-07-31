@@ -20,7 +20,7 @@ const SignIn = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3010/user/login",
+        "https://himalaya-usa-clone.onrender.com/user/login",
         login,
         {
           headers: {
@@ -36,7 +36,7 @@ const SignIn = () => {
           id: response.data.user._id,
         })
       );
-      navigate('/account', { replace: true });
+      navigate("/account", { replace: true });
       setSnackbarMessage("Successfully Signed In!");
       setSnackbarSeverity("success");
     } catch (error) {
