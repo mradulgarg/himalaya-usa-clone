@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
     try {
       const newCart = new cartModel(req.body);
       const savedCart = await newCart.save();
-      console.log("saved cart",savedCart)
+      // console.log("saved cart",savedCart)
       res.status(201).json(savedCart);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -59,7 +59,7 @@ router.post('/', async (req, res) => {
   
   // Remove an item from the cart
   router.delete('/:email/:productId', async (req, res) => {
-    console.log(req.params,"gg")
+    // console.log(req.params,"gg")
     try {
       const cart = await cartModel.findOneAndDelete({ email: req.params.email,productId:req.params.productId});
       if (!cart) return res.status(404).json({ message: 'cart not found' });

@@ -29,6 +29,7 @@ const useStyles = makeStyles(() => ({
   anchor: {
     color: "black",
     textDecoration: "none",
+    cursor:"pointer",
   },
   totalBox: {
     display: "flex",
@@ -155,7 +156,7 @@ const ShoppingCart = () => {
         ))}
 
         <Grid container item justifyContent={"space-between"}>
-          <Link to="/" className={classes.anchor}>
+          <Link to="/products/all" className={classes.anchor}>
             Continue shopping
           </Link>
           <Box

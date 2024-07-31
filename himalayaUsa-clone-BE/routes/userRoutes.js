@@ -8,7 +8,7 @@ import jwt from 'jsonwebtoken';
 // Create a new user
 router.post("/register", async (req, res) => {
   try {
-    console.log("users", req.body);
+    // console.log("users", req.body);
     const { fname: firstname, lname: lastname, email, password } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -33,7 +33,7 @@ router.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
     const savedUser = await userModel.findOne({ email });
-    console.log(email, password, savedUser, 'data');
+    // console.log(email, password, savedUser, 'data');
 
     if (!savedUser) {
       return res.status(404).json({ message: "User not found." });
